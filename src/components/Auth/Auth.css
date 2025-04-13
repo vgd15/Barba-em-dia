@@ -1,0 +1,113 @@
+.page-login, .page-register {
+    height:80vh;
+}
+
+.formulario{
+    border-right: 1px solid #ccc;
+}
+
+.formulario, .box-hero{
+    background:#F7F8FD;;
+    padding: 30px 30px;
+    overflow: hidden;
+    max-width: 600px;
+    width: 100%;
+    border: 7px solid #8EC2AC;
+    box-shadow: 0px 0px 131.6px -18px #E0F3EB inset;
+    border-radius: 20px;
+
+}
+
+.formulario img{
+    width: 150px;
+    height: 40px;
+}
+
+.formulario form{
+    gap:30px
+}
+
+.page-register .formulario form{
+    gap:20px;
+}
+
+.formulario h2{
+    font-weight: 700;
+}
+
+body .formulario form input{
+    border:1px solid #ccc;
+    padding: 7px 15px;
+}
+
+body .formulario form input:before{
+    content:"Login";
+    display:block;
+    font-size:1.5rem;
+    color:var(--color-three)
+    
+}
+
+body .page-register .formulario form input{
+    padding:5px;
+}
+
+body .formulario form input, input{
+    background:#E0F3EB;
+    border:none;
+    border-radius: 10px;
+}
+
+
+
+.formulario .login, .formulario button, button{
+    background:var(--color-three);
+    border:none;
+    color:#fff;
+    font-weight: 700;
+    align-self: center;
+}
+
+
+body .formulario button{
+    border:none;
+    padding: 0;
+    width:30%!important;
+    padding: 3px 20px;
+    border-radius: 10px;
+}
+
+body .formulario button.isbn{
+    width:50%!important;
+}
+
+.formulario button a{
+    color:#ffffff;
+    text-decoration: none;
+    font-size: 1rem;
+}
+
+.box-hero{
+    position: relative;
+    height: 555px;
+}
+
+.box-hero img{
+    width: 440px;
+    position: relative;
+    z-index: 1;
+}
+
+.page-register button, .page button{
+    background-color:#2E3432;
+    padding: 15px;
+    color:#fff;
+    font-weight: 700;
+}
+
+
+@media screen and (max-width: 991px){
+    .box-hero{
+        display:none;
+    }
+}

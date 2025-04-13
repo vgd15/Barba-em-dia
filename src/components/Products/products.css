@@ -1,0 +1,202 @@
+.swiper-slide > div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: inset 0px 0px 7px 1px #00000029;
+    padding: 40px;
+}
+
+.button-item{
+    gap:15px
+}
+
+.button-item button:hover{
+    transform: scale(1.2);
+}
+
+.page{
+    height: 100vh;
+    margin: 13rem;
+}
+
+.cabecalho__pesquisar button{
+    background:#2E3432;
+    color: #fff;
+    font-size: 16px;
+    border-radius:0;
+}
+
+body .users button{
+    background-color: var(--color-three)!important;
+}
+
+.users > div{
+   gap:6rem;
+   justify-content: center!important;
+   padding: 3rem!important;
+}
+
+.users ul button{
+    padding: 5px 15px;
+    margin-right: 0.5rem;
+}
+
+.users ul{
+    list-style-type: none;
+}
+
+.users ul li{
+    display: flex;
+    justify-content: space-between;
+    padding: 15px;
+    border-bottom: 1px solid #979797;
+}
+
+.button-item button{
+    padding: 5px 15px;
+}
+
+/*Página registro user*/
+
+.register-form{
+    background: #F7F8FD;
+    padding: 30px 30px;
+    overflow: hidden;
+    max-width: 600px;
+    width: 100%;
+    border: 7px solid #8EC2AC;
+    box-shadow: 0px 0px 131.6px -18px #E0F3EB inset;
+    border-radius: 20px;
+    margin: auto;
+    margin-top: 6rem;
+}
+
+.register-form h2{
+    text-align: center;
+}
+
+.register-form form{
+    gap: 30px;
+    display: flex;
+    flex-direction: column;
+}
+
+.register-form form input{
+    background: #E0F3EB;
+    border: none;
+    border-radius: 10px;
+    padding: 7px 15px;
+}
+
+.register-form form label input{
+    margin-left: 1rem;
+}
+
+.dados-user {
+    flex-direction: column;
+    background: #F7F8FD;
+    padding: 30px 30px;
+    overflow: hidden;
+    max-width: 600px;
+    width: 100%;
+    border: 7px solid #8EC2AC;
+    box-shadow: 0px 0px 131.6px -18px #E0F3EB inset;
+    border-radius: 20px;
+    margin: auto;
+    margin-top: 6rem;
+    align-items: center;
+}
+
+.dados-user input{
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 5px 15px;
+}
+
+.dados-user h2{
+    text-align: center;
+}
+
+.home-inside{
+    display: flex;
+    margin-top: 6rem;
+}
+
+.home-inside > .container{
+    flex-wrap: wrap;
+}
+
+.home-inside .container > div{
+    width:50%;
+}
+
+.home-inside > div:first-child{
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 3rem;
+}
+
+.home-inside .container > div:first-child{
+    height: fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 2rem;
+}
+
+@media screen and (max-width: 991px){
+    .wrapper-desktop{
+        flex-direction: column;
+        gap:20px
+    }
+
+    .links-button ul{
+        justify-content: center;
+        padding: 0;
+    }
+
+    .home-inside .container > div{
+        width: 100%;
+        padding: 20px;
+    }
+
+    .formulario{
+        width: 100%;
+        margin: 4rem 0;
+    }
+
+    .page{
+        margin: 2rem 2rem;
+    }
+
+    .page  > .container{
+        margin-top: 23rem;
+    }
+
+    .register-form{
+        margin: 3rem 0;
+    }
+
+    .users > div{
+        gap:1rem;
+        padding: 15px!important;
+    }
+
+    .desativar-editar{
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .users ul{
+        padding: 0;
+    }
+
+    .users ul button {
+        padding: 5px 15px;
+        margin-right: 0.5rem;
+        width: 120px;
+    }
+
+}

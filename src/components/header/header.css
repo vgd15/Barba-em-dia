@@ -1,0 +1,24 @@
+.header-geral{
+    padding: 0px 40px;
+    box-shadow: 0px 4px 15.3px 0px #00000040;
+}
+
+.links-button li{
+    list-style: none;
+}
+
+.links-button button, button{
+    background:#2E3432;
+    border:none;
+    color:#ffffff;
+    padding: 12px;
+    font-size: 16px;
+    border-radius: 10px;
+}
+
+.cabecalho__pesquisar input{
+    padding: 2px 10px;
+    border-radius:0!important;
+    background: #FFF;
+    
+}
