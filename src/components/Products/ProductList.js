@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import ProductItem from './ProductItem';
-import Header from '../header/header.jsx';
+
 
 const ProductList = () => {
   const [products, setProducts] = useState([]);
@@ -53,7 +53,7 @@ const ProductList = () => {
 
   return (
     <div>
-      <Header />
+      
       
         <div className="home-inside">
         <div className="container">

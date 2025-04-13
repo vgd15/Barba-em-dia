@@ -1,0 +1,59 @@
+.contato {
+  padding: 4rem 2rem;
+  background-color: var(--preto);
+  text-align: center;
+}
+
+.contato h2 {
+  font-size: 2.5rem;
+  color: var(--dourado);
+  margin-bottom: 2rem;
+}
+
+.contato a {
+  color: var(--dourado);
+  text-decoration: none;
+  font-size: 1.2rem;
+  font-weight: bold;
+  padding: 0.8rem 2rem;
+  border: 2px solid var(--dourado);
+  border-radius: 5px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.contato a:hover {
+  background-color: var(--dourado);
+  color: var(--preto);
+}
+
+/* ========== RESPONSIVIDADE ========== */
+@media (max-width: 768px) {
+  .contato {
+    padding: 3rem 1.5rem; /* Menos espaçamento lateral em telas menores */
+  }
+
+  .contato h2 {
+    font-size: 2rem; /* Ajusta o tamanho da fonte para telas menores */
+  }
+
+  .contato a {
+    font-size: 1rem; /* Ajusta o tamanho do link */
+    padding: 0.8rem 1.5rem; /* Ajusta o padding do link */
+  }
+}
+
+@media (max-width: 480px) {
+  .contato {
+    padding: 2rem 1rem; /* Menor espaçamento lateral em telas muito pequenas */
+  }
+
+  .contato h2 {
+    font-size: 1.6rem; /* Ajusta ainda mais a fonte para telas muito pequenas */
+  }
+
+  .contato a {
+    width: 100%; /* Faz o botão ocupar toda a largura disponível */
+    font-size: 1rem; /* Ajusta o tamanho da fonte */
+    padding: 1rem; /* Deixa o botão maior e mais legível */
+  }
+}

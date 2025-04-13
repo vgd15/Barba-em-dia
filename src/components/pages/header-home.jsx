@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import devoluWeb from "../img/DevoluWeb.svg";
+
 import "./style.css";
-import Closer from "../img/Fechar.svg"
+
 function HeaderInicial(){
 
     const [isActive, setIsActive] = useState(false);
@@ -17,7 +17,7 @@ return(
          <a href="/"><button>Home</button></a>
       </div>
       <div className="logo">
-         <img src={devoluWeb} alt="logo"/>
+        
       </div>
       <div className="login">
          <a href="/login"><button>Login</button></a>
@@ -26,7 +26,7 @@ return(
    <div className="header d-flex justify-content-around align-items-center header-mob">
     <div class="d-flex justify-content-between align-items-center p-3">
       <div className="logo">
-      <a href="/"> <img src={devoluWeb} alt="logo"/></a>
+      
       </div>
       <button onClick={handleClick}>
       <svg width="28" height="22" viewBox="0 0 28 22" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -40,7 +40,7 @@ return(
       <div class={`sidebar--menu ${isActive ? 'active' : ''}`}>
       <div class="close d-flex justify-content-start align-items-center">
                <button onClick={handleClick} className="close-button">
-                    <img src={Closer} alt="fechar sidebar"></img>
+                    
                 </button>
          </div>
          <div className="home-button">

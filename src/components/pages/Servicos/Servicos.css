@@ -1,0 +1,41 @@
+.servicos {
+    padding: 4rem 2rem;
+    text-align: center;
+  }
+  
+  .servicos h2 {
+    font-size: 2.5rem;
+    color: var(--dourado);
+    margin-bottom: 2rem;
+  }
+  
+  .servicos ul {
+    list-style: none;
+    padding: 10;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1rem;
+  }
+
+  @media (max-width: 768px) {
+    .servicos ul {
+      padding: 0; /* Remove o padding no mobile */
+    }
+  }
+  
+  .servicos ul li {
+    background-color: var(--cinza);
+    padding: 1rem;
+    color: var(--branco);
+    border-radius: 5px;
+    font-size: 1.2rem;
+    text-align: center;
+    transition: background-color 0.3s ease;
+  }
+  
+  .servicos ul li:hover {
+    background-color: var(--dourado);
+    color: var(--preto);
+  }
+  

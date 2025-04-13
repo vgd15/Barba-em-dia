@@ -1,0 +1,103 @@
+header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: var(--preto);
+  border-bottom: 1px solid var(--dourado);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  width: 100%;
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.logo img {
+  height: 50px;
+  width: auto;
+  object-fit: contain;
+}
+
+/* Menu de navegação */
+.nav-links {
+  display: flex;
+  gap: 2rem;
+}
+
+/* Estilo para os links do menu */
+.nav-links a {
+  color: var(--branco);
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: var(--dourado);
+}
+
+.agendar-btn {
+  background-color: var(--dourado);
+  color: var(--preto);
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.agendar-btn:hover {
+  background-color: #b88d30;
+}
+
+/* Responsividade: para telas pequenas, escondemos o menu */
+
+@media (max-width: 768px) {
+  /* Esconde o menu de navegação em telas pequenas */
+  .nav-links {
+    display: none;
+  }
+
+  .header-content {
+    justify-content: space-between;
+    padding: 1rem;
+  }
+
+  .logo img {
+    height: 40px; /* Ajusta o tamanho do logo para telas pequenas */
+  }
+
+  .agendar-btn {
+    margin-left: 1rem;
+  }
+}
+
+/* Para telas menores que 480px (ajustes adicionais) */
+@media (max-width: 480px) {
+  .header-content {
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+  }
+
+  .logo img {
+    height: 35px;
+  }
+
+  .agendar-btn {
+    width: 100%;
+    margin-top: 1rem;
+  }
+}
