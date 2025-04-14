@@ -7,17 +7,24 @@
 
 .footer-content {
   display: flex;
-  justify-content: center;
+  justify-content: space-between; /* Alinha os itens de forma distribuída */
   align-items: flex-start;
   flex-wrap: wrap;
-  gap: 5rem;
+  gap: 2rem; /* Reduzido o espaçamento entre os itens */
   max-width: 1200px;
-  margin: 0 auto ;
+  margin: 0 auto;
 }
 
 .footer-section {
-  min-width: 250px;
-  max-width: 300px;
+  min-width: 200px; /* Reduzido para permitir mais espaço */
+  max-width: 250px; /* Reduzido para garantir que todos caibam na linha */
+}
+
+.footer-section.mapa iframe {
+  border-radius: 10px;
+  width: 100%; /* Ocupa toda a largura disponível */
+  max-width: 350px; /* Ajustei para garantir que o mapa não fique grande demais */
+  height: 90px; /* Aumentei um pouco a altura */
 }
 
 .footer h4 {
@@ -73,12 +80,10 @@ footer .copyright {
 
   .footer-section {
     min-width: unset;
+    max-width: unset;
   }
 
   .social-icons {
     justify-content: center;
-
   }
-
-  
 }
