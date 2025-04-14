@@ -8,6 +8,7 @@ import Home from './components/pages/home.jsx';
 import DadosUser from './components/Products/DadosUser.js';
 import RegisterUser from './components/Products/RegisterUser.js';
 import Users from './components/Products/Users.js';
+import Agendamento from './components/pages/Agendamento/Agendamento.jsx';
 
 function App() {
 
@@ -17,6 +18,7 @@ function App() {
        <Router>
         <Routes>
         <Route path="/" element={<Home />} />
+          <Route path='/agendamento' element={<Agendamento />} />
           <Route path="/login" element={<Login />} />
            <Route path="/products" element={<ProductList />} />
            <Route path="/products/create-product" element={<ProductForm />} />
