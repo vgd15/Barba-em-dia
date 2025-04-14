@@ -5,6 +5,7 @@ import Servicos from './Servicos/Servicos';
 import SobreNos from './SobreNos/SobreNos';
 import Contato from './Contato/Contato';
 import Header from './Header/Header';
+import Footer from './Footer/Footer';
 import "./style.css";
 import axios from 'axios';
 
@@ -34,6 +35,7 @@ function Home() {
     <SobreNos />
     <Servicos />
     <Contato />
+    <Footer />
   </>
 );
 }
