@@ -1,0 +1,35 @@
+/* WhatsAppButton.css */
+
+.whatsapp-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 999;
+    background-color: #25d366;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease;
+    flex-direction: row; /* Alinha ícone e texto na horizontal */
+  }
+  
+  .whatsapp-button:hover {
+    transform: scale(1.1);
+  }
+  
+  .whatsapp-icon {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px; /* Espaço entre ícone e texto */
+  }
+  
+  .whatsapp-text {
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+    white-space: nowrap; /* Para garantir que o texto não quebre */
+  }
+  

@@ -6,6 +6,7 @@ import SobreNos from './SobreNos/SobreNos';
 import Contato from './Contato/Contato';
 import Header from './Header/Header';
 import Footer from './Footer/Footer';
+import WhatsAppButton from './WhatsAppButton/WhatsAppButton';
 import "./style.css";
 import axios from 'axios';
 
@@ -36,6 +37,7 @@ function Home() {
     <Servicos />
     <Contato />
     <Footer />
+    <WhatsAppButton />
   </>
 );
 }
