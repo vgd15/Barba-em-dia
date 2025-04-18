@@ -1,0 +1,90 @@
+.agendamento {
+    background-color: var(--cinza);
+    padding: 2rem;
+    border-radius: 8px;
+    max-width: 600px;
+    margin: 2rem auto;
+    color: var(--branco);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.agendamento h2 {
+    color: var(--dourado);
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.agendamento label {
+    display: block;
+}
+
+.agendamento select,
+.agendamento input[type="date"],
+.agendamento input[type="time"],
+.agendamento button {
+    width: 100%;
+    padding: 0.75rem;
+    border-radius: 4px;
+    margin-bottom: 1.5rem;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+}
+
+.agendamento input[type="time"] {
+    margin-bottom: 0.5rem;
+}
+
+.agendamento select:focus,
+.agendamento input[type="date"]:focus,
+.agendamento input[type="time"]:focus,
+.agendamento button:focus {
+    outline: none;
+    border-color: var(--dourado);
+}
+
+.agendamento button {
+    background-color: var(--dourado);
+    color: var(--preto);
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.agendamento button:hover {
+    background-color: #b88d30;
+}
+
+.agendamento button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+.agendamento .preferencia-horario{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+@media (max-width: 768px) {
+    .agendamento {
+        padding: 1rem;
+    }
+
+    .agendamento h2 {
+        font-size: 1.5rem;
+    }
+
+    .agendamento select,
+    .agendamento input[type="date"],
+    .agendamento input[type="time"],
+    .agendamento button {
+        font-size: 0.9rem;
+    }
+
+    /* Garantir que os botões fiquem visíveis sempre */
+    .agendamento button {
+        margin-top: 1rem;
+        /* Dá um pouco mais de espaço entre os campos e o botão */
+    }
+}

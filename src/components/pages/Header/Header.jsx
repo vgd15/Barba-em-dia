@@ -20,7 +20,7 @@ function Header() {
         </nav>
 
         {/* Botão de Agendamento */}
-        <button className="agendar-btn">
+        <button className="agendar-btn" onClick={() => window.location.href = "/agendamento"}>
           <span>Agende seu Horário</span>
         </button>
       </div>
