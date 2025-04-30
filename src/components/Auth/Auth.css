@@ -7,13 +7,13 @@
 }
 
 .formulario, .box-hero{
-    background:#F7F8FD;;
+    background:#fff;
     padding: 30px 30px;
     overflow: hidden;
     max-width: 600px;
     width: 100%;
-    border: 7px solid #8EC2AC;
-    box-shadow: 0px 0px 131.6px -18px #E0F3EB inset;
+    border: 7px solid var(--dourado);
+    box-shadow: 0px 0px 131.6px -18px var(--dourado);
     border-radius: 20px;
 
 }
@@ -53,15 +53,15 @@ body .page-register .formulario form input{
 }
 
 body .formulario form input, input{
-    background:#E0F3EB;
-    border:none;
+    background:#fff;
+    border:1px solid var(--dourado);
     border-radius: 10px;
 }
 
 
 
-.formulario .login, .formulario button, button{
-    background:var(--color-three);
+.formulario .login, .formulario button{
+    background:var(--dourado);
     border:none;
     color:#fff;
     font-weight: 700;

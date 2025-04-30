@@ -5,18 +5,18 @@ import "./Auth.css";
 import HeaderInicial from "../pages/header-home";
 
 const Login = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [username, setUsername] = useState('');
+  const [senha, setPassword] = useState('');
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('Submitting login with:', { email, password });
+    console.log('Submitting login with:', { username, senha });
 
     try {
-      const response = await axios.post('https://pj2-biblioteca-univesp.onrender.com/api/User/Login', {
-        email,
-        password,
+      const response = await axios.post('http://localhost:5243/api/Administrador/Login', {
+        username,
+        senha,
       });
 
       // Verifique se a resposta contém os dados esperados
@@ -35,7 +35,7 @@ const Login = () => {
         });
 
         // Redireciona para a página de produtos
-        navigate('/products');
+        navigate('/admin-painel');
       } else {
         console.error('No token received:', response.data);
         alert('Login failed, please check your credentials and try again.');
@@ -57,14 +57,14 @@ const Login = () => {
               <form className="d-flex flex-column justify-content-center" onSubmit={handleSubmit}>
                 <input
                   type="text"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
+                  value={username}
+                  onChange={(e) => setUsername(e.target.value)}
                   placeholder="user"
                   required
                 />
                 <input
-                  type="password"
-                  value={password}
+                  type="senha"
+                  value={senha}
                   onChange={(e) => setPassword(e.target.value)}
                   placeholder="Password"
                   required

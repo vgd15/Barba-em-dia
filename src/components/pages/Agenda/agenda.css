@@ -1,0 +1,46 @@
+.agenda-container {
+    padding: 20px;
+  }
+  
+  .agenda-formulario {
+    margin-bottom: 30px;
+  }
+  
+  .agenda-formulario label {
+    display: block;
+    margin-top: 10px;
+    font-weight: bold;
+  }
+  
+  .agenda-formulario input {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+  }
+  
+  .agenda-horarios {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  
+  .horario {
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+  }
+  
+  .disponivel {
+    background-color: #d4edda; /* verde claro */
+    color: #155724;
+    border: 2px solid #155724;
+  }
+  
+  .indisponivel {
+    background-color: #f8d7da; /* vermelho claro */
+    color: #721c24;
+    border: 2px solid #721c24;
+  }
+  

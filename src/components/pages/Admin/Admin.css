@@ -1,0 +1,150 @@
+.admin-container {
+    display: flex;
+    height: 100vh;
+    background-color: #f4f4f4;
+  }
+  
+  .admin-sidebar {
+    width: 250px;
+    background-color: #fff;
+    border-right: 1px solid #ddd;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+  }
+
+  .admin h2{
+    color:#000;
+    width: 100%;
+  }
+
+  .admin-main h3, .lista-travamentos{
+    color:#000;
+  }
+
+  .admin input{
+    padding: 0 15px;
+    width:100%;
+    margin-bottom: 10px;
+  }
+
+  .react-datepicker-wrapper{
+    width:100%;
+  }
+
+  .confirmar-travamento{
+    margin-top: 2rem;
+  }
+
+  .admin-main > div{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+  }
+  
+  .sidebar-header {
+    font-weight: bold;
+    margin-bottom: 10px;
+    background: #000;
+    color:#fff;
+    text-align: center;
+    padding: 10px;
+    cursor: pointer;
+  }
+  
+  .sidebar-section {
+    font-size: 12px;
+    color: #999;
+    margin: 20px 0 10px;
+  }
+  
+  .sidebar-menu button {
+    display: flex;
+    justify-content: space-between;
+    background: none;
+    border: none;
+    text-align: left;
+    padding: 8px 0;
+    cursor: pointer;
+    font-size: 14px;
+    color: #333;
+    width: 100%;
+  }
+
+  .sidebar-menu button::after{
+    content: ">";
+  }
+  
+  .sidebar-menu button:hover {
+    color: #007bff;
+  }
+  
+  .admin-main {
+    flex: 1;
+    padding: 20px;
+  }
+  
+  .admin-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+  }
+
+  .admin-header h2{
+    color:#fff;
+  }
+  
+  .admin-cards {
+    display: flex;
+    margin-top: 20px;
+    gap: 20px;
+  }
+  
+  .card {
+    flex: 1;
+    background: white;
+    border-radius: 5px;
+    box-shadow: 0 0 5px #ccc;
+    padding: 10px;
+  }
+  
+  .card-header {
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .card-content {
+    height: 100px;
+    background: #f8f8f8;
+    border-radius: 5px;
+  }
+  
+  .admin-graph {
+    margin-top: 30px;
+    background: white;
+    border-radius: 5px;
+    box-shadow: 0 0 5px #ccc;
+    padding: 20px;
+  }
+  
+  .graph-header {
+    text-align: center;
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .graph-content {
+    height: 200px;
+    background: #f8f8f8;
+    border-radius: 5px;
+  }
+  
+  label{
+    color:#000;
+    margin-right: 15px;
+    max-width: 200px;
+    width:100%;
+    margin-bottom: 5px;
+  }

@@ -19,10 +19,16 @@ function Header() {
           <a href="#contato">Contato</a>
         </nav>
 
+        <div className="box-esquerda">
+
         {/* Botão de Agendamento */}
-        <button className="agendar-btn" onClick={() => window.location.href = "/agendamento"}>
+        <button className="agendar-btn" onClick={() => window.location.href = "/login"}>
           <span>Agende seu Horário</span>
         </button>
+        <button className="agendar-btn" onClick={() => window.location.href = "/admin"}>
+          <span>Admin</span>
+        </button>
+      </div>
       </div>
     </header>
   );

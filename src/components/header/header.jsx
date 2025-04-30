@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import "./style.css";
+import "../pages/style.css";
 import logo from "../img/logo.png";
 
-function HeaderInicial(){
+function HeaderLogado(){
 
     const [isActive, setIsActive] = useState(false);
 
@@ -17,7 +17,7 @@ return(
           <img src={logo} alt="Paulinho Barbearia" />
    </a>
       <div className="home-button">
-         <a href="/">Home</a>
+         <a href="/">Logout</a>
       </div>
       
    </div>
@@ -42,7 +42,7 @@ return(
                 </button>
          </div>
          <div className="home-button">
-            <a href="/"><button>Home</button></a>
+            <a href="/"><button>Logout</button></a>
          </div>
          
       </div>
@@ -50,4 +50,4 @@ return(
 </header>
 )
 }
-export default HeaderInicial;
+export default HeaderLogado;

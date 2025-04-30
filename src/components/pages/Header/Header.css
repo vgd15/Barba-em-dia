@@ -5,7 +5,6 @@ header {
   padding: 1rem 2rem;
   background-color: var(--preto);
   border-bottom: 1px solid var(--dourado);
-  position: sticky;
   top: 0;
   z-index: 10;
   width: 100%;
@@ -62,9 +61,23 @@ header {
   background-color: #b88d30;
 }
 
+.box-esquerda{
+  display: flex;
+  gap:1rem;
+}
+
+.header-mob{
+  display: none;
+}
+
 /* Responsividade: para telas pequenas, escondemos o menu */
 
 @media (max-width: 768px) {
+
+  .header-mob{
+    display: block;
+  }
+
   /* Esconde o menu de navegação em telas pequenas */
   .nav-links {
     display: none;

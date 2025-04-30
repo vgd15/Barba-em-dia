@@ -22,7 +22,6 @@
 .agendamento input[type="date"],
 .agendamento input[type="time"],
 .agendamento button {
-    width: 100%;
     padding: 0.75rem;
     border-radius: 4px;
     margin-bottom: 1.5rem;

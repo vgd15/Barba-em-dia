@@ -29,4 +29,37 @@
     margin: 0 auto; /* Centraliza o conteúdo */
     padding: 0 2rem;
   }
+
+  .header-mob{
+    display: none!important;
+  }
+
+  .header{
+    width: 100%;
+  }
+
+  .home-button{
+    background-color: transparent;
+  }
+
+  .home-button a{
+    text-decoration: none;
+    color:#fff;
+    font-size: 16px;
+  }
+
+  .formulario label{
+    color:var(--cinza);
+  }
+
+  .admin .formulario{
+    box-shadow: unset;
+  }
+
+  @media screen and (max-width: 768px){
+    .header-mob{
+      display: block!important;
+    }
+  }
+
   
