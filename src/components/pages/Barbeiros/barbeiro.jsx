@@ -8,7 +8,7 @@ function CadastrarBarbeiro() {
   const [servicos, setServicos] = useState([]);
   const [servicosSelecionados, setServicosSelecionados] = useState([]);
 
-  const API_URL = "http://localhost:5243";
+  const API_URL = "https://backendbarbaemdia.onrender.com";
 
   useEffect(() => {
     buscarServicos();

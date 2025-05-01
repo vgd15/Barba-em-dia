@@ -5,7 +5,7 @@ import axios from "axios";
 import "./agenda.css";
 
 function Agenda() {
-  const API_URL = "http://localhost:5243"; // ajuste para sua API
+  const API_URL = "https://backendbarbaemdia.onrender.com"; // ajuste para sua API
 
   const [dataSelecionada, setDataSelecionada] = useState(new Date());
   const [idBarbeiro, setIdBarbeiro] = useState("");

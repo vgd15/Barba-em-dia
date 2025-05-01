@@ -6,7 +6,7 @@ function ServicosPainel() {
   const [novoServico, setNovoServico] = useState({ descricao: "", duracaoPadrao: "", preco: 0, ativo: true });
   const [servicoSelecionado, setServicoSelecionado] = useState(null);
   const [idBusca, setIdBusca] = useState("");
-  const API_URL = "http://localhost:5243"; // ajuste se necessário
+  const API_URL = "https://backendbarbaemdia.onrender.com"; // ajuste se necessário
 
   useEffect(() => {
     buscarTodosServicos();

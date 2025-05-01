@@ -14,7 +14,7 @@ const LoginCliente = () => {
     console.log('Submitting login with:', { nrTelefone, nome });
 
     try {
-      const response = await axios.post('http://localhost:5243/api/Clientes/Login', {
+      const response = await axios.post('https://backendbarbaemdia.onrender.com/api/Clientes/Login', {
         nrTelefone,
         nome,
       });

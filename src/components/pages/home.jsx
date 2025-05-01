@@ -11,24 +11,7 @@ import "./style.css";
 import axios from 'axios';
 
 function Home() {
-
-  useEffect(() => {  // useEffect recebe uma função
-    const wakeuprender = async () => {
-      // Seu código aqui
-      try {
-        const response = await axios.post('https://pj2-biblioteca-univesp.onrender.com/api/User/Login', {
-          email: "minions",
-          password: "minions"
-        }) 
-        console.log(response.data);
-    } catch (err) {
-        console.error(err); 
-      };
-    };
-
-    wakeuprender();  // Chama a função
-  }, []); // Array de dependências, neste caso vazio
-
+  
   return (
     <>
     <Header />

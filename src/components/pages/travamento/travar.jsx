@@ -12,7 +12,7 @@ function TravarAgenda() {
   const [travamentos, setTravamentos] = useState([]);
   const [idSelecionado, setIdSelecionado] = useState(null); // Para editar
 
-  const API_URL = "http://localhost:5243";
+  const API_URL = "https://backendbarbaemdia.onrender.com";
 
   const token = localStorage.getItem("token");
   const headers = {

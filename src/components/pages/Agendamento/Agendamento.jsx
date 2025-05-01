@@ -16,7 +16,7 @@ function Agendamento() {
   const [dataSelecionada, setDataSelecionada] = useState(null);
   const [preferenciaHorario, setPreferenciaHorario] = useState({ inicio: "", fim: "" });
 
-  const API_URL = "http://localhost:5243";
+  const API_URL = "https://backendbarbaemdia.onrender.com";
 
   useEffect(() => {
     carregarServicos();
