@@ -3,7 +3,12 @@ import axios from "axios";
 
 function ServicosPainel() {
   const [servicos, setServicos] = useState([]);
-  const [novoServico, setNovoServico] = useState({ descricao: "", duracaoPadrao: "", preco: 0, ativo: true });
+  const [novoServico, setNovoServico] = useState({
+    descricao: "",
+    duracaoPadrao: "00:00",
+    preco: 0,
+    ativo: true,
+  });
   const [servicoSelecionado, setServicoSelecionado] = useState(null);
   const [idBusca, setIdBusca] = useState("");
   const API_URL = "https://backendbarbaemdia.onrender.com"; // ajuste se necessário
@@ -22,7 +27,9 @@ function ServicosPainel() {
 
   const buscarTodosServicos = async () => {
     try {
-      const response = await axios.get(`${API_URL}/api/Servicos`, { headers: getTokenHeaders() });
+      const response = await axios.get(`${API_URL}/api/Servicos`, {
+        headers: getTokenHeaders(),
+      });
       if (response.data.success) {
         setServicos(response.data.data);
       }
@@ -37,7 +44,9 @@ function ServicosPainel() {
       return;
     }
     try {
-      const response = await axios.get(`${API_URL}/api/Servicos/${idBusca}`, { headers: getTokenHeaders() });
+      const response = await axios.get(`${API_URL}/api/Servicos/${idBusca}`, {
+        headers: getTokenHeaders(),
+      });
       if (response.data.success) {
         setServicoSelecionado(response.data.data);
       }
@@ -48,11 +57,22 @@ function ServicosPainel() {
 
   const cadastrarServico = async () => {
     try {
-      const response = await axios.post(`${API_URL}/api/Servicos`, novoServico, { headers: getTokenHeaders() });
+      novoServico.duracaoPadrao = novoServico.duracaoPadrao + ":00";
+
+      const response = await axios.post(
+        `${API_URL}/api/Servicos`,
+        novoServico,
+        { headers: getTokenHeaders() }
+      );
       if (response.data.success) {
         alert("Serviço cadastrado com sucesso!");
         buscarTodosServicos();
-        setNovoServico({ descricao: "", duracaoPadrao: "", preco: 0, ativo: true });
+        setNovoServico({
+          descricao: "",
+          duracaoPadrao: "00:00",
+          preco: 0,
+          ativo: true,
+        });
       } else {
         alert("Erro ao cadastrar serviço.");
       }
@@ -63,7 +83,9 @@ function ServicosPainel() {
 
   const deletarServico = async (id) => {
     try {
-      await axios.delete(`${API_URL}/api/Servicos/${id}`, { headers: getTokenHeaders() });
+      await axios.delete(`${API_URL}/api/Servicos/${id}`, {
+        headers: getTokenHeaders(),
+      });
       alert("Serviço deletado com sucesso!");
       buscarTodosServicos();
     } catch (error) {
@@ -73,7 +95,11 @@ function ServicosPainel() {
 
   const ativarServico = async (id) => {
     try {
-      await axios.put(`${API_URL}/api/Servicos/Ativar/${id}`, {}, { headers: getTokenHeaders() });
+      await axios.put(
+        `${API_URL}/api/Servicos/Ativar/${id}`,
+        {},
+        { headers: getTokenHeaders() }
+      );
       alert("Serviço ativado com sucesso!");
       buscarTodosServicos();
     } catch (error) {
@@ -83,7 +109,11 @@ function ServicosPainel() {
 
   const inativarServico = async (id) => {
     try {
-      await axios.put(`${API_URL}/api/Servicos/Inativar/${id}`, {}, { headers: getTokenHeaders() });
+      await axios.put(
+        `${API_URL}/api/Servicos/Inativar/${id}`,
+        {},
+        { headers: getTokenHeaders() }
+      );
       alert("Serviço inativado com sucesso!");
       buscarTodosServicos();
     } catch (error) {
@@ -101,19 +131,28 @@ function ServicosPainel() {
           type="text"
           placeholder="Descrição"
           value={novoServico.descricao}
-          onChange={(e) => setNovoServico({ ...novoServico, descricao: e.target.value })}
+          onChange={(e) =>
+            setNovoServico({ ...novoServico, descricao: e.target.value })
+          }
         />
         <input
-          type="text"
+          type="time"
           placeholder="Duração Padrão (ex: 00:30)"
           value={novoServico.duracaoPadrao}
-          onChange={(e) => setNovoServico({ ...novoServico, duracaoPadrao: e.target.value })}
+          onChange={(e) =>
+            setNovoServico({ ...novoServico, duracaoPadrao: e.target.value })
+          }
         />
         <input
           type="number"
           placeholder="Preço"
           value={novoServico.preco}
-          onChange={(e) => setNovoServico({ ...novoServico, preco: parseFloat(e.target.value) })}
+          onChange={(e) =>
+            setNovoServico({
+              ...novoServico,
+              preco: parseFloat(e.target.value),
+            })
+          }
         />
         <button onClick={cadastrarServico}>Cadastrar Serviço</button>
       </div>
@@ -131,11 +170,21 @@ function ServicosPainel() {
         {servicoSelecionado && (
           <div className="servico-detalhes">
             <h4>Detalhes do Serviço:</h4>
-            <p><b>ID:</b> {servicoSelecionado.id}</p>
-            <p><b>Descrição:</b> {servicoSelecionado.descricao}</p>
-            <p><b>Duração:</b> {servicoSelecionado.duracaoPadrao}</p>
-            <p><b>Preço:</b> R$ {servicoSelecionado.preco}</p>
-            <p><b>Ativo:</b> {servicoSelecionado.ativo ? "Sim" : "Não"}</p>
+            <p>
+              <b>ID:</b> {servicoSelecionado.id}
+            </p>
+            <p>
+              <b>Descrição:</b> {servicoSelecionado.descricao}
+            </p>
+            <p>
+              <b>Duração:</b> {servicoSelecionado.duracaoPadrao}
+            </p>
+            <p>
+              <b>Preço:</b> R$ {servicoSelecionado.preco}
+            </p>
+            <p>
+              <b>Ativo:</b> {servicoSelecionado.ativo ? "Sim" : "Não"}
+            </p>
           </div>
         )}
       </div>
@@ -145,11 +194,18 @@ function ServicosPainel() {
         <ul>
           {servicos.map((servico) => (
             <li key={servico.id}>
-              <strong>{servico.descricao}</strong> - {servico.duracaoPadrao} - R$ {servico.preco} - {servico.ativo ? "Ativo" : "Inativo"}
+              <strong>{servico.descricao}</strong> - {servico.duracaoPadrao} -
+              R$ {servico.preco} - {servico.ativo ? "Ativo" : "Inativo"}
               <div className="acoes-servico">
-                <button onClick={() => ativarServico(servico.id)}>Ativar</button>
-                <button onClick={() => inativarServico(servico.id)}>Inativar</button>
-                <button onClick={() => deletarServico(servico.id)}>Excluir</button>
+                <button onClick={() => ativarServico(servico.id)}>
+                  Ativar
+                </button>
+                <button onClick={() => inativarServico(servico.id)}>
+                  Inativar
+                </button>
+                <button onClick={() => deletarServico(servico.id)}>
+                  Excluir
+                </button>
               </div>
             </li>
           ))}

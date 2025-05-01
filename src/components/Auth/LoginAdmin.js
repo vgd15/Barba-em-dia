@@ -21,17 +21,15 @@ const Login = () => {
 
       // Verifique se a resposta contém os dados esperados
       if (response.data && response.data.data && response.data.data.token) {
-        const { token, id: userId, isAdministrator } = response.data.data;
+        const { token, administrador: admin } = response.data.data;
 
         // Armazenar o token, userId e isAdmin no localStorage
         localStorage.setItem('token', token);
-        localStorage.setItem('userId', userId); // Armazena o ID do usuário
-        localStorage.setItem('isAdmin', isAdministrator); // Armazena o status de administrador
+        localStorage.setItem('userId', admin.id); // Armazena o ID do usuário
 
-        console.log('Token, User ID, and Admin status stored:', {
+        console.log('Token, User ID status stored:', {
           token: localStorage.getItem('token'),
-          userId: localStorage.getItem('userId'),
-          isAdmin: localStorage.getItem('isAdmin')
+          userId: localStorage.getItem('userId')
         });
 
         // Redireciona para a página de produtos
