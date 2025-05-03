@@ -30,7 +30,12 @@ function TravarAgenda() {
 
   const listarTravamentos = async () => {
     try {
-      const response = await axios.get(`${API_URL}/api/Travamentos`, { headers });
+      const response = await axios.get(`${API_URL}/api/Travamentos`, {
+        headers,
+      });
+
+      if (response.status === 204) return;
+
       if (response.data.success) {
         setTravamentos(response.data.data);
       } else {
@@ -61,7 +66,11 @@ function TravarAgenda() {
     try {
       if (idSelecionado) {
         // Se houver ID selecionado, é edição (PUT)
-        await axios.put(`${API_URL}/api/Travamentos/${idSelecionado}`, payload, { headers });
+        await axios.put(
+          `${API_URL}/api/Travamentos/${idSelecionado}`,
+          payload,
+          { headers }
+        );
         alert("Travamento atualizado com sucesso!");
       } else {
         // Se não, é cadastro novo (POST)
@@ -85,7 +94,8 @@ function TravarAgenda() {
   };
 
   const deletarTravamento = async (id) => {
-    if (!window.confirm("Tem certeza que deseja excluir esse travamento?")) return;
+    if (!window.confirm("Tem certeza que deseja excluir esse travamento?"))
+      return;
 
     try {
       await axios.delete(`${API_URL}/api/Travamentos/${id}`, { headers });
@@ -161,14 +171,28 @@ function TravarAgenda() {
 
         {travamentos.map((travamento) => (
           <div key={travamento.id} className="item-travamento">
-            <p><strong>Barbeiro:</strong> {travamento.barbeiro?.nome}</p>
-            <p><strong>Motivo:</strong> {travamento.motivo}</p>
-            <p><strong>Início:</strong> {new Date(travamento.dataHoraInicio).toLocaleString()}</p>
-            <p><strong>Fim:</strong> {new Date(travamento.dataHoraFim).toLocaleString()}</p>
+            <p>
+              <strong>Barbeiro:</strong> {travamento.barbeiro?.nome}
+            </p>
+            <p>
+              <strong>Motivo:</strong> {travamento.motivo}
+            </p>
+            <p>
+              <strong>Início:</strong>{" "}
+              {new Date(travamento.dataHoraInicio).toLocaleString()}
+            </p>
+            <p>
+              <strong>Fim:</strong>{" "}
+              {new Date(travamento.dataHoraFim).toLocaleString()}
+            </p>
 
             <div className="botoes-travamento">
-              <button onClick={() => editarTravamento(travamento)}>Editar</button>
-              <button onClick={() => deletarTravamento(travamento.id)}>Excluir</button>
+              <button onClick={() => editarTravamento(travamento)}>
+                Editar
+              </button>
+              <button onClick={() => deletarTravamento(travamento.id)}>
+                Excluir
+              </button>
             </div>
           </div>
         ))}

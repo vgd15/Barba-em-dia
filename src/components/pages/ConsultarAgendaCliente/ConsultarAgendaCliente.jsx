@@ -18,9 +18,12 @@ function ConsultarAgenda() {
     const token = localStorage.getItem("token");
 
     try {
-      const response = await axios.get(`${API_URL}/api/Agendamento/Cliente/${clienteId}`, {
-        headers: { Authorization: `Bearer ${token}` },
-      });
+      const response = await axios.get(
+        `${API_URL}/api/Agendamento/Cliente/${clienteId}`,
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
 
       if (response.status === 204 || !response.data.data?.length) {
         setAgendamentos([]);
@@ -63,12 +66,16 @@ function ConsultarAgenda() {
     };
 
     try {
-      await axios.put(`${API_URL}/api/Agendamento/Reagendar/${agendamento.id}`, payload, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-          Accept: "application/json",
-        },
-      });
+      await axios.put(
+        `${API_URL}/api/Agendamento/Reagendar/${agendamento.id}`,
+        payload,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            Accept: "application/json",
+          },
+        }
+      );
       alert("Agendamento reagendado.");
       buscarAgendamentos();
     } catch (error) {
@@ -84,32 +91,61 @@ function ConsultarAgenda() {
         <h2 className="painel-mensagem">Seus agendamentos</h2>
 
         {agendamentos.length === 0 ? (
-  <p className="painel-mensagem">Você ainda não possui agendamentos.</p>
-) : (
-    
-  agendamentos.map((agendamento) => (
-    <div key={agendamento.id} className="agendamento-bloco">
-      <ul className="lista-agendamentos">
-        <li className="agendamento-item">
-          <p><strong>Serviço:</strong> {agendamento.servico?.descricao}</p>
-          <p><strong>Barbeiro:</strong> {agendamento.barbeiro?.nome}</p>
-          <p><strong>Data:</strong> {new Date(agendamento.dataHoraInicio).toLocaleDateString("pt-BR")}</p>
-          <p><strong>Horário:</strong> {new Date(agendamento.dataHoraInicio).toLocaleTimeString("pt-BR", { hour: '2-digit', minute: '2-digit' })}</p>
-        </li>
-      </ul>
+          <p className="painel-mensagem">Você ainda não possui agendamentos.</p>
+        ) : (
+          agendamentos.map((agendamento) => (
+            <div key={agendamento.id} className="agendamento-bloco">
+              <ul className="lista-agendamentos">
+                <li className="agendamento-item">
+                  <p>
+                    <strong>Serviço:</strong> {agendamento.servico?.descricao}
+                  </p>
+                  <p>
+                    <strong>Barbeiro:</strong> {agendamento.barbeiro?.nome}
+                  </p>
+                  <p>
+                    <strong>Data:</strong>{" "}
+                    {new Date(agendamento.dataHoraInicio).toLocaleDateString(
+                      "pt-BR"
+                    )}
+                  </p>
+                  <p>
+                    <strong>Horário:</strong>{" "}
+                    {new Date(agendamento.dataHoraInicio).toLocaleTimeString(
+                      "pt-BR",
+                      { hour: "2-digit", minute: "2-digit" }
+                    )}
+                  </p>
+                  <p>
+                    <strong>Status:</strong> {agendamento.status}
+                  </p>
+                </li>
+              </ul>
 
-      <div className="botoes">
-        <button onClick={() => reagendarAgendamento(agendamento)}>Reagendar</button>
-        <button onClick={() => cancelarAgendamento(agendamento.id)}>Cancelar</button>
-      </div>
-    </div>
-  ))
-)}
+              <div className="botoes">
+                {agendamento.status !== "Cancelado" && (
+                  <button onClick={() => reagendarAgendamento(agendamento)}>
+                    Reagendar
+                  </button>
+                )}
+                {agendamento.status !== "Cancelado" && (
+                  <button onClick={() => cancelarAgendamento(agendamento.id)}>
+                    Cancelar
+                  </button>
+                )}
+              </div>
+            </div>
+          ))
+        )}
         <div className="botoes">
-          <button onClick={() => navigate("/agendamento")}>Agendar novo horário</button>
+          <button onClick={() => navigate("/agendamento")}>
+            Agendar novo horário
+          </button>
         </div>
       </div>
-      <a className="back" href="/painel-cliente">Voltar</a>
+      <a className="back" href="/painel-cliente">
+        Voltar
+      </a>
     </div>
   );
 }
