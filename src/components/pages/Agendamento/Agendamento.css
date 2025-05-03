@@ -6,23 +6,36 @@
     margin: 2rem auto;
     color: var(--branco);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: start;
+}
+
+.agendamento select{
+    width:100%;
 }
 
 .agendamento h2 {
     color: var(--dourado);
     margin-bottom: 1.5rem;
     text-align: center;
+    width:100%;
 }
 
 .agendamento label {
     display: block;
+    color:#fff;
+    max-width: 100%;
+    width: 100%;
+    text-align: start;
 }
 
 .agendamento select,
 .agendamento input[type="date"],
 .agendamento input[type="time"],
 .agendamento button {
-    padding: 0.75rem;
+    padding: 8px 10px;
     border-radius: 4px;
     margin-bottom: 1.5rem;
     border: 1px solid #ccc;
@@ -64,6 +77,27 @@
     gap: 10px;
     align-items: center;
 }
+
+.confirmar-agendamento{
+    margin-top: 2rem;
+}
+
+.calendario{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.react-datepicker__input-container, .react-datepicker__input-container{
+    width:100%;
+}
+
+.react-datepicker__input-container input{
+    padding: 8px;
+    width:100%;
+}
+
+
 
 @media (max-width: 768px) {
     .agendamento {

@@ -15,15 +15,18 @@ function Agendamento() {
   const [diasDisponiveis, setDiasDisponiveis] = useState([]);
   const [dataSelecionada, setDataSelecionada] = useState(null);
   const [preferenciaHorario, setPreferenciaHorario] = useState({ inicio: "", fim: "" });
+  const [barbeiros, setBarbeiros] = useState([]);
+  const [barbeiroSelecionado, setBarbeiroSelecionado] = useState("");
 
   const API_URL = "https://backendbarbaemdia.onrender.com";
 
   useEffect(() => {
     carregarServicos();
     carregarDiasDisponiveis();
+    carregarBarbeiros();
   }, []);
 
-  const carregarServicos = async () => {
+  const carregarBarbeiros = async () => {
     try {
       const token = localStorage.getItem("token");
       const headers = {
@@ -31,8 +34,28 @@ function Agendamento() {
         Accept: "application/json"
       };
 
-      const response = await axios.get(`${API_URL}/api/Servicos`, { headers });
+      const response = await axios.get(`${API_URL}/api/Barbeiros/Ativos`, { headers });
 
+      if (response.data.success) {
+        setBarbeiros(response.data.data);
+      } else {
+        console.error("Erro ao buscar barbeiros:", response.data.message);
+      }
+    } catch (error) {
+      console.error("Erro ao carregar barbeiros:", error);
+    }
+  };
+
+  const carregarServicos = async () => {
+    try {
+      const token = localStorage.getItem("token");
+      const headers = {
+        Authorization: `Bearer ${token}`,
+        Accept: "application/json" // Corrigido para o valor aceito pela API
+      };
+  
+      const response = await axios.get(`${API_URL}/api/Servicos`, { headers });
+  
       if (response.data.success) {
         setServicos(response.data.data);
       } else {
@@ -42,6 +65,7 @@ function Agendamento() {
       console.error("Erro ao carregar serviços:", error);
     }
   };
+  
 
   const carregarDiasDisponiveis = async () => {
     try {
@@ -82,9 +106,28 @@ function Agendamento() {
         Accept: "application/json"
       };
 
+      let idBarbeiroFinal;
+
+      if (barbeiroSelecionado) {
+        idBarbeiroFinal = parseInt(barbeiroSelecionado);
+      } else {
+        // Filtra os barbeiros que oferecem o serviço selecionado
+        const barbeirosDisponiveis = barbeiros.filter(b =>
+          b.barbeiroServicos.some(bs => bs.servico.id === parseInt(servicoSelecionado))
+        );
+
+        if (barbeirosDisponiveis.length === 0) {
+          alert("Nenhum barbeiro disponível para este serviço.");
+          return;
+        }
+
+        const barbeiroAleatorio = barbeirosDisponiveis[Math.floor(Math.random() * barbeirosDisponiveis.length)];
+        idBarbeiroFinal = barbeiroAleatorio.id;
+      }
+
       const agendamento = {
-        idCliente: parseInt(localStorage.getItem("userId")), // usa o id do cliente que veio no login
-        idBarbeiro: 1, // fixo por enquanto, pode depois melhorar
+        idCliente: parseInt(localStorage.getItem("clienteId")),
+        idBarbeiro: idBarbeiroFinal,
         idServico: parseInt(servicoSelecionado),
         dataHoraInicio: `${dataSelecionada}T${preferenciaHorario.inicio}`
       };
@@ -104,56 +147,77 @@ function Agendamento() {
 
   return (
     <div className="agendamento-container">
-      <HeaderLogado></HeaderLogado>
-    <div className="agendamento">
-      <h2>Agende seu horário</h2>
+      <HeaderLogado />
+      <div className="agendamento">
+        <h2>Agende seu horário</h2>
 
-      <label>Serviço:</label>
-      <select
-        value={servicoSelecionado}
-        onChange={(e) => setServicoSelecionado(e.target.value)}
-      >
-        <option value="">Selecione o serviço</option>
-        {servicos.map((servico) => (
-          <option key={servico.id} value={servico.id}>
-            {servico.descricao}
-          </option>
-        ))}
-      </select>
+        <label>Barbeiro:</label>
+        <select
+          value={barbeiroSelecionado}
+          onChange={(e) => setBarbeiroSelecionado(e.target.value)}
+        >
+          <option value="">Escolher depois</option>
+          {barbeiros.map((barbeiro) => (
+            <option key={barbeiro.id} value={barbeiro.id}>
+              {barbeiro.nome}
+            </option>
+          ))}
+        </select>
 
-      <label>Preferência de horário:</label>
-      <div className="preferencia-horario">
-        <input
-          type="time"
-          value={preferenciaHorario.inicio}
-          onChange={(e) =>
-            setPreferenciaHorario({ ...preferenciaHorario, inicio: e.target.value })
-          }
+        <label>Serviço:</label>
+        <select
+          value={servicoSelecionado}
+          onChange={(e) => setServicoSelecionado(e.target.value)}
+        >
+          <option value="">Selecione o serviço</option>
+          {barbeiroSelecionado
+            ? barbeiros.find(b => b.id === parseInt(barbeiroSelecionado))?.barbeiroServicos.map(bs => (
+                <option key={bs.servico.id} value={bs.servico.id}>
+                  {bs.servico.descricao}
+                </option>
+              ))
+            : servicos.map(servico => (
+                <option key={servico.id} value={servico.id}>
+                  {servico.descricao}
+                </option>
+              ))}
+        </select>
+
+
+        <label>Preferência de horário:</label>
+        <div className="preferencia-horario">
+          <input
+            type="time"
+            value={preferenciaHorario.inicio}
+            onChange={(e) => setPreferenciaHorario({ ...preferenciaHorario, inicio: e.target.value })}
+          />
+          <span>às</span>
+          <input
+            type="time"
+            value={preferenciaHorario.fim}
+            onChange={(e) => setPreferenciaHorario({ ...preferenciaHorario, fim: e.target.value })}
+          />
+        </div>
+
+        
+        <div className="calendario">
+        <label>Escolha o dia:</label>
+        <DatePicker
+          selected={dataSelecionada ? new Date(dataSelecionada) : null}
+          onChange={(date) => setDataSelecionada(date.toISOString().split("T")[0])}
+          filterDate={diaDisponivel}
+          dateFormat="dd/MM/yyyy"
+          placeholderText="Selecione uma data"
+          locale="pt-BR"
         />
-        <span>às</span>
-        <input
-          type="time"
-          value={preferenciaHorario.fim}
-          onChange={(e) =>
-            setPreferenciaHorario({ ...preferenciaHorario, fim: e.target.value })
-          }
-        />
+       </div>
+
+        <button className="confirmar-agendamento" onClick={confirmarAgendamento}>
+          Confirmar Agendamento
+        </button>
       </div>
 
-      <label>Escolha o dia:</label>
-      <DatePicker
-        selected={dataSelecionada ? new Date(dataSelecionada) : null}
-        onChange={(date) => setDataSelecionada(date.toISOString().split("T")[0])}
-        filterDate={diaDisponivel}
-        dateFormat="dd/MM/yyyy"
-        placeholderText="Selecione uma data"
-        locale="pt-BR"
-      />
-
-      <button className="confirmar-agendamento" onClick={confirmarAgendamento}>
-        Confirmar Agendamento
-      </button>
-    </div>
+      <a className="back" href="/painel-cliente">Voltar</a>
     </div>
   );
 }

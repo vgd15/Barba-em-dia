@@ -1,0 +1,27 @@
+.painel-container{
+    text-align: center;
+    padding-top: 5rem;
+}
+
+.painel-container strong{
+    color:var(--dourado);
+    text-transform: capitalize;
+}
+
+.botoes{
+    margin-top:3.5rem;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+button{
+    background-color: var(--dourado);
+    color: var(--preto);
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
